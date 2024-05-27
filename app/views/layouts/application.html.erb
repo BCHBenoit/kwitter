@@ -36,9 +36,11 @@
 
     <div class="container">
 
-      <p>
-        <%= flash["notice"] %>
-      </p>
+ <% if flash["notice"] %>
+  <div class="alert alert-primary mt-3">
+    <%= flash["notice"] %>
+  </div>
+<% end %>
 
       <%= yield %>
     </div>
