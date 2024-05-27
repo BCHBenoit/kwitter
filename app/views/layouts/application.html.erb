@@ -19,19 +19,28 @@
   </head>
 
   <body>
-    <p>
-      <% @user = User.find_by({ "id" => session["user_id"] }) %>
-      <% if @user == nil %>
-        <a href="/users/new">Sign Up</a> | <a href="/login">Login</a>
-      <% else %>
-        <%= @user["real_name"] %> | <a href="/logout">Logout</a>
-      <% end %>
-    </p>
+    
+    <nav class="navbar bg-primary mb-3" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Kwitter</a>
+        <span class="navbar-text">
+          <% @user = User.find_by({ "id" => session["user_id"] }) %>
+          <% if @user == nil %>
+            <a href="/users/new">Sign Up</a> | <a href="/login">Login</a>
+          <% else %>
+            <%= @user["real_name"] %> | <a href="/logout">Logout</a>
+          <% end %>
+        </span>
+      </div>
+    </nav>
 
-    <p>
-      <%= flash["notice"] %>
-    </p>
+    <div class="container">
 
-    <%= yield %>
+      <p>
+        <%= flash["notice"] %>
+      </p>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
